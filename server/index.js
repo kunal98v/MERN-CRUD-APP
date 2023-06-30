@@ -4,10 +4,11 @@ const UserModel = require('./models/Users')
 const cors = require('cors')
 
 const app = express()
+const DATABASE_URI = process.env.DATABASE_URI
 
 app.use(express.json())
 app.use(cors())
-mongoose.connect('your database URI goes here !');
+mongoose.connect(DATABASE_URI);
 
 app.get("/getUsers",async (req,res)=>{
    try{
