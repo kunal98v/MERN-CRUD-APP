@@ -7,7 +7,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
-mongoose.connect('mongodb+srv://kunal98v:Kunal1234$@mr47.9zgc8xn.mongodb.net/data_47?retryWrites=true&w=majority');
+mongoose.connect('your database URI goes here !');
 
 app.get("/getUsers",async (req,res)=>{
    try{
