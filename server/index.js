@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const UserModel = require('./models/Users')
 const cors = require('cors')
+require('dotenv').config();
 
 const app = express()
 const DATABASE_URI = process.env.DATABASE_URI
