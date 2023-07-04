@@ -6,10 +6,7 @@ require('dotenv').config();
 
 const app = express()
 const DATABASE_URI = process.env.DATABASE_URI
-<<<<<<< HEAD
-=======
 
->>>>>>> 2c745461ed3b43a3a132ca3461fa42ac1f665e22
 app.use(express.json())
 app.use(cors())
 mongoose.connect(DATABASE_URI);
