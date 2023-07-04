@@ -25,7 +25,6 @@ function App() {
      email:email
     }).then((response)=>{
        console.log(response.data.name)
-       
        getData();
        Toast(`Added user : ${response.data.name}`)
     });
