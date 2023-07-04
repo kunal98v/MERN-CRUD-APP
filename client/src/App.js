@@ -1,6 +1,7 @@
 import './App.css';
 import React ,{useState,useEffect}  from 'react';
 import Axios from "axios";
+import Toast from './components/Toast';
 
 function App() {
   const [listUsers ,setListUsers] = useState([])
@@ -13,27 +14,33 @@ function App() {
   },[listUsers]);
  
   const getData = ()=>{
-    Axios.get("https://mern-g3vl.onrender.com/getUsers").then((response)=>{
+    Axios.get("http://localhost:4000/getUsers").then((response)=>{
     setListUsers(response.data)
   });
   }
   const addUser = ()=>{
-    Axios.post("https://mern-g3vl.onrender.com/createUser",{
+    Axios.post("http://localhost:4000/createUser",{
      name:name,
      age:age,
      email:email
     }).then((response)=>{
-       console.log(response.data)
+       console.log(response.data.name)
        getData();
+       Toast(`Added user : ${response.data.name}`)
     });
    }
-   function handleDelete(id){
-      Axios.post("https://mern-g3vl.onrender.com/delUser",{
-        id:id
+   function handleDelete(id,name){
+      Axios.post("http://localhost:4000/delUser",{
+        id:id,
+        name:name
       }).then((response)=>{
-        console.log("deleted..")
+        console.log("del")
+        Toast(`Deleted user : ${response.data.name}`)
+
       });
    }
+   
+
 
   return( 
   <div>
@@ -51,10 +58,12 @@ function App() {
           <p>{user.name}</p>
           <p>{user.age}</p>
           <p>{user.email}</p>
-          <button  className='delbtn' onClick={()=>handleDelete(user._id)}>Delete</button>
+          
+          <button  className='delbtn' onClick={()=>{ handleDelete(user._id,user.name) }}>Delete</button>
           <button className='updbtn'>Update</button>
         </div>
         )})}
+        <div id="toastBox" ></div>
      </div>
   </div>
   );
