@@ -6,10 +6,6 @@ require('dotenv').config();
 
 const app = express()
 const DATABASE_URI = process.env.DATABASE_URI
-<<<<<<< HEAD
-=======
-
->>>>>>> 36a84f3d9aa1158347a8a9d41059d66c218a901d
 app.use(express.json())
 app.use(cors())
 mongoose.connect(DATABASE_URI);
@@ -25,10 +21,15 @@ app.get("/getUsers",async (req,res)=>{
 });
 
 app.post("/createUser",async(req,res)=>{
-    const user = req.body;
-    const newUser = new UserModel(user)
-    await newUser.save()
-    res.json(user);
+    try{
+        const user = await req.body;
+        const newUser = new UserModel(user)
+        await newUser.save()
+        res.json(user);
+    }
+    catch(err){
+        console.log(err)
+    }
 });
 
 app.post("/delUser",async(req,res)=>{
