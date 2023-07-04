@@ -2,12 +2,13 @@ const express = require('express')
 const mongoose = require('mongoose')
 const UserModel = require('./models/Users')
 const cors = require('cors')
+require('dotenv').config();
 
 const app = express()
-
+const DATABASE_URI = process.env.DATABASE_URI
 app.use(express.json())
 app.use(cors())
-mongoose.connect('mongodb+srv://kunal98v:Kunal1234$@mr47.9zgc8xn.mongodb.net/data_47?retryWrites=true&w=majority');
+mongoose.connect(DATABASE_URI);
 
 app.get("/getUsers",async (req,res)=>{
    try{
