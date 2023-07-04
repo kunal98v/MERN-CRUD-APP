@@ -49,6 +49,10 @@ button{
   width: 95px;
   margin-top: 15px
 }
+
+.addUser:hover{
+  background-color: rgb(154, 226, 46);
+}
 .app{
   display: flex;
   flex-direction: column;
