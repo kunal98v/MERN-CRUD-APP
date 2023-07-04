@@ -14,12 +14,12 @@ function App() {
   },[listUsers]);
  
   const getData = ()=>{
-    Axios.get("http://localhost:4000/getUsers").then((response)=>{
+    Axios.get("https://mern-g3vl.onrender.com/getUsers").then((response)=>{
     setListUsers(response.data)
   });
   }
   const addUser = ()=>{
-    Axios.post("http://localhost:4000/createUser",{
+    Axios.post("https://mern-g3vl.onrender.com/createUser",{
      name:name,
      age:age,
      email:email
@@ -30,7 +30,7 @@ function App() {
     });
    }
    function handleDelete(id,name){
-      Axios.post("http://localhost:4000/delUser",{
+      Axios.post("https://mern-g3vl.onrender.com/delUser",{
         id:id,
         name:name
       }).then((response)=>{
